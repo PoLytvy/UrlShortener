@@ -25,13 +25,11 @@ public class UrlShortenerImpl implements UrlShortenerService {
         String originalUrl = link.getValue();
         String key = convertor.convertLink(originalUrl);
         urls.put(key, originalUrl);
-        return key;
+        return UrlShortenerService.link + key;
     }
-
-
 
     @Override
     public String getOriginalUrl(String shortUrl) {
-        return null;
+        return urls.get(shortUrl);
     }
 }
