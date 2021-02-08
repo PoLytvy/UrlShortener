@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class UrlShortenerImpl implements UrlShortenerService {
+public class UrlShortenerServiceImpl implements UrlShortenerService {
 
     private final LinkConvertor convertor;
     private final Map<String, String> urls = new HashMap<>();
 
     @Autowired
-    public UrlShortenerImpl(LinkConvertor convertor) {
+    public UrlShortenerServiceImpl(LinkConvertor convertor) {
         this.convertor = convertor;
     }
 
