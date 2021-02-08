@@ -2,6 +2,7 @@ package com.test.task.service.impl;
 
 import com.test.task.convertor.LinkConvertor;
 import com.test.task.entity.Link;
+import com.test.task.exception.ShortUrlNotFoundException;
 import com.test.task.service.UrlShortenerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,9 @@ public class UrlShortenerImpl implements UrlShortenerService {
 
     @Override
     public String getOriginalUrl(String shortUrl) {
+        if (!urls.containsKey(shortUrl)){
+            throw new ShortUrlNotFoundException("Url by key " + shortUrl + " not found");
+        }
         return urls.get(shortUrl);
     }
 
