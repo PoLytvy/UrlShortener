@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Map;
+
 @RestController
+@RequestMapping("/link")
 public class UrlShortenerController {
 
     private  final UrlShortenerService service;
@@ -28,5 +31,15 @@ public class UrlShortenerController {
         rv.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
         rv.setUrl(originalUrl);
         return new ModelAndView(rv);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{shortUrl}")
+    public void deleteByKey(@PathVariable String shortUrl){
+       service.deleteByKey(shortUrl);
+    }
+
+    @GetMapping
+    public Map<String, String> getAllLinks(){
+        return service.getAllLinks();
     }
 }

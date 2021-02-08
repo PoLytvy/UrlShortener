@@ -32,4 +32,14 @@ public class UrlShortenerImpl implements UrlShortenerService {
     public String getOriginalUrl(String shortUrl) {
         return urls.get(shortUrl);
     }
+
+    @Override
+    public void deleteByKey(String key) {
+        urls.remove(key);
+    }
+
+    @Override
+    public Map<String, String> getAllLinks() {
+        return urls;
+    }
 }
