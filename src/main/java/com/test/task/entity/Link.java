@@ -6,6 +6,9 @@ public class Link {
 
     private String value;
 
+    public Link() {
+    }
+
     public Link(String value) {
         this.value = value;
     }
